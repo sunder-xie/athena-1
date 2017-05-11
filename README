@@ -1,0 +1,10 @@
+模块介绍：
+1.athena-client（独立）:dubbo提供给外部的client包，使用 mvn clean deploy 打包上传
+
+2.bean:BO/DO等实体类
+3.common:工具类
+
+4.dao:依赖bean，直连数据库层
+5.biz(核心):数据逻辑层，进行数据的逻辑运算和事务控制。依赖于dao和common
+6.server：dubbo提供出去的接口的实现类Impl，调用biz中写好的逻辑方法，封装一层提供出去。依赖biz
+7.web:即SpringMVC的Controller层。依赖server

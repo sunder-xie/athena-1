@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- dubbo服务异常处理 -->
+    <bean id="dubboServerInterceptor" class="com.tqmall.athena.service.interceptor.DubboServerInterceptor"/>
+    <aop:config proxy-target-class="false">
+        <aop:pointcut id="dubboServerPointcut"
+                      expression="execution(* com.tqmall.athena.service..*.*(..))"/>
+        <aop:advisor advice-ref="dubboServerInterceptor" pointcut-ref="dubboServerPointcut"/>
+    </aop:config>
+
+    <!-- redis缓存 -->
+    <bean id="redisCacheInterceptor" class="com.tqmall.athena.common.redis.interceptor.RedisCacheInterceptor"/>
+    <aop:config proxy-target-class="false">
+        <aop:pointcut id="redisCachePointcut" expression="execution(* com.tqmall.athena.bussiness..*.*(..)) and execution(* com.tqmall.athena.redisBiz..*.*(..))"/>
+        <aop:advisor advice-ref="redisCacheInterceptor" pointcut-ref="redisCachePointcut"/>
+    </aop:config>
+
+</beans>

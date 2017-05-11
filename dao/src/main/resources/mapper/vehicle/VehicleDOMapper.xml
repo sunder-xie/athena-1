@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.athena.dal.mapper.vehicle.VehicleDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.athena.bean.entity.vehicle.VehicleDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="CHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="INTEGER" />
+    <result column="modifier" property="modifier" jdbcType="INTEGER" />
+    <result column="p_id" property="pid" jdbcType="INTEGER" />
+    <result column="vehicle_name" property="vehicleName" jdbcType="VARCHAR" />
+    <result column="vehicle_grade" property="grade" jdbcType="INTEGER" />
+    <result column="category_id" property="categoryId" jdbcType="INTEGER" />
+    <result column="category_name" property="categoryName" jdbcType="VARCHAR" />
+    <result column="company_name" property="company" jdbcType="VARCHAR" />
+    <result column="first_word" property="firstWord" jdbcType="CHAR" />
+    <result column="logo_url" property="logo" jdbcType="VARCHAR" />
+    <result column="is_hot" property="isHot" jdbcType="BIT" />
+    <result column="has_extend_attr" property="hasExtendAttr" jdbcType="BIT" />
+    <result column="notice_number" property="noticeNumber" jdbcType="VARCHAR" />
+    <result column="engine_number" property="engineNumber" jdbcType="VARCHAR" />
+    <result column="chassis_number" property="chassisNumber" jdbcType="VARCHAR" />
+    <result column="max_horse_power" property="maxHorsePower" jdbcType="VARCHAR" />
+    <result column="driving_mode" property="drivingMode" jdbcType="VARCHAR" />
+    <result column="fuel_type" property="fuelType" jdbcType="VARCHAR" />
+    <result column="brand_name" property="brand" jdbcType="VARCHAR" />
+    <result column="series_name" property="series" jdbcType="VARCHAR" />
+    <result column="total_weight" property="totalWeight" jdbcType="VARCHAR" />
+    <result column="curb_weight" property="curbWeight" jdbcType="VARCHAR" />
+    <result column="rtu_code" property="rtu" jdbcType="VARCHAR" />
+    <result column="carrying_capacity" property="carryingCapacity" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, p_id, vehicle_name, vehicle_grade,
+    category_id, category_name, company_name, first_word, logo_url, is_hot, has_extend_attr, notice_number,
+    engine_number, chassis_number, max_horse_power, driving_mode, fuel_type, brand_name, series_name,
+    total_weight, curb_weight, rtu_code, carrying_capacity
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from db_vehicle
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByPid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from db_vehicle
+    where p_id = #{pid,jdbcType=INTEGER}
+    and is_deleted = 'N'
+  </select>
+
+  <select id="selectByNoticeNum" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from db_vehicle
+    where notice_number = #{noticeNum}
+    and is_deleted = 'N'
+  </select>
+
+</mapper>

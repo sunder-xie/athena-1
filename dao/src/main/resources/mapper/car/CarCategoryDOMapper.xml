@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.athena.dal.mapper.car.CarCategoryDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.athena.bean.entity.car.CarCategoryDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="power" property="power" jdbcType="VARCHAR" />
+    <result column="level" property="level" jdbcType="INTEGER" />
+    <result column="first_word" property="firstWord" jdbcType="CHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="is_del" property="isDel" jdbcType="INTEGER" />
+    <result column="model" property="model" jdbcType="VARCHAR" />
+    <result column="series" property="series" jdbcType="VARCHAR" />
+    <result column="brand" property="brand" jdbcType="VARCHAR" />
+    <result column="company" property="company" jdbcType="VARCHAR" />
+    <result column="country" property="country" jdbcType="TINYINT" />
+    <result column="car_type" property="carType" jdbcType="VARCHAR" />
+    <result column="car_level" property="carLevel" jdbcType="VARCHAR" />
+    <result column="import_info" property="importInfo" jdbcType="CHAR" />
+    <result column="logo" property="logo" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="INTEGER" />
+    <result column="is_hot" property="isHot" jdbcType="INTEGER" />
+    <result column="year" property="year" jdbcType="VARCHAR" />
+    <result column="engine_type" property="engineType" jdbcType="VARCHAR" />
+    <result column="chassis_number" property="chassisNumber" jdbcType="VARCHAR" />
+    <result column="guide_price" property="guidePrice" jdbcType="VARCHAR" />
+    <result column="oil_capacity" property="oilCapacity" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, power, level, first_word, sort, pid, is_del, model, series, brand, company, 
+    country, car_type, car_level, import_info, logo, flag, is_hot, year, engine_type, 
+    chassis_number,guide_price, oil_capacity
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from db_car_category
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from db_car_category
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tqmall.athena.bean.entity.car.CarCategoryDO" >
+    insert into db_car_category (id, name, power, 
+      level, first_word, sort, pid, 
+      is_del, model, series, brand, 
+      company, country, car_type, 
+      car_level, import_info, logo, 
+      flag, is_hot, year, engine_type, 
+      chassis_number)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{power,jdbcType=VARCHAR}, 
+      #{level,jdbcType=INTEGER}, #{firstWord,jdbcType=CHAR}, #{sort,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, 
+      #{isDel,jdbcType=INTEGER}, #{model,jdbcType=VARCHAR}, #{series,jdbcType=VARCHAR}, #{brand,jdbcType=VARCHAR}, 
+      #{company,jdbcType=VARCHAR}, #{country,jdbcType=TINYINT}, #{carType,jdbcType=VARCHAR}, 
+      #{carLevel,jdbcType=VARCHAR}, #{importInfo,jdbcType=CHAR}, #{logo,jdbcType=VARCHAR}, 
+      #{flag,jdbcType=INTEGER}, #{isHot,jdbcType=INTEGER}, #{year,jdbcType=VARCHAR}, #{engineType,jdbcType=VARCHAR}, 
+      #{chassisNumber,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tqmall.athena.bean.entity.car.CarCategoryDO" >
+    insert into db_car_category
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="power != null" >
+        power,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="firstWord != null" >
+        first_word,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="isDel != null" >
+        is_del,
+      </if>
+      <if test="model != null" >
+        model,
+      </if>
+      <if test="series != null" >
+        series,
+      </if>
+      <if test="brand != null" >
+        brand,
+      </if>
+      <if test="company != null" >
+        company,
+      </if>
+      <if test="country != null" >
+        country,
+      </if>
+      <if test="carType != null" >
+        car_type,
+      </if>
+      <if test="carLevel != null" >
+        car_level,
+      </if>
+      <if test="importInfo != null" >
+        import_info,
+      </if>
+      <if test="logo != null" >
+        logo,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="isHot != null" >
+        is_hot,
+      </if>
+      <if test="year != null" >
+        year,
+      </if>
+      <if test="engineType != null" >
+        engine_type,
+      </if>
+      <if test="chassisNumber != null" >
+        chassis_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="power != null" >
+        #{power,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="firstWord != null" >
+        #{firstWord,jdbcType=CHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null" >
+        #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="model != null" >
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="series != null" >
+        #{series,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null" >
+        #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=TINYINT},
+      </if>
+      <if test="carType != null" >
+        #{carType,jdbcType=VARCHAR},
+      </if>
+      <if test="carLevel != null" >
+        #{carLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="importInfo != null" >
+        #{importInfo,jdbcType=CHAR},
+      </if>
+      <if test="logo != null" >
+        #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="isHot != null" >
+        #{isHot,jdbcType=INTEGER},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="engineType != null" >
+        #{engineType,jdbcType=VARCHAR},
+      </if>
+      <if test="chassisNumber != null" >
+        #{chassisNumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tqmall.athena.bean.entity.car.CarCategoryDO" >
+    update db_car_category
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="power != null" >
+        power = #{power,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="firstWord != null" >
+        first_word = #{firstWord,jdbcType=CHAR},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null" >
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="model != null" >
+        model = #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="series != null" >
+        series = #{series,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null" >
+        brand = #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        country = #{country,jdbcType=TINYINT},
+      </if>
+      <if test="carType != null" >
+        car_type = #{carType,jdbcType=VARCHAR},
+      </if>
+      <if test="carLevel != null" >
+        car_level = #{carLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="importInfo != null" >
+        import_info = #{importInfo,jdbcType=CHAR},
+      </if>
+      <if test="logo != null" >
+        logo = #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="isHot != null" >
+        is_hot = #{isHot,jdbcType=INTEGER},
+      </if>
+      <if test="year != null" >
+        year = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="engineType != null" >
+        engine_type = #{engineType,jdbcType=VARCHAR},
+      </if>
+      <if test="chassisNumber != null" >
+        chassis_number = #{chassisNumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tqmall.athena.bean.entity.car.CarCategoryDO" >
+    update db_car_category
+    set name = #{name,jdbcType=VARCHAR},
+      power = #{power,jdbcType=VARCHAR},
+      level = #{level,jdbcType=INTEGER},
+      first_word = #{firstWord,jdbcType=CHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      pid = #{pid,jdbcType=INTEGER},
+      is_del = #{isDel,jdbcType=INTEGER},
+      model = #{model,jdbcType=VARCHAR},
+      series = #{series,jdbcType=VARCHAR},
+      brand = #{brand,jdbcType=VARCHAR},
+      company = #{company,jdbcType=VARCHAR},
+      country = #{country,jdbcType=TINYINT},
+      car_type = #{carType,jdbcType=VARCHAR},
+      car_level = #{carLevel,jdbcType=VARCHAR},
+      import_info = #{importInfo,jdbcType=CHAR},
+      logo = #{logo,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=INTEGER},
+      is_hot = #{isHot,jdbcType=INTEGER},
+      year = #{year,jdbcType=VARCHAR},
+      engine_type = #{engineType,jdbcType=VARCHAR},
+      chassis_number = #{chassisNumber,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+
+
+
+
+
+
+  <!--======================================================================-->
+  <select id="selectByPid" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    from db_car_category
+    WHERE
+    is_del = 0
+    AND pid = #{pid}
+    ORDER BY name ASC
+  </select>
+
+
+  <select id="selectByLevel" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from db_car_category
+    where
+    is_del = 0
+    and level = #{level}
+  </select>
+
+  <select id="selectByPidList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from db_car_category
+    where
+    is_del = 0
+    and pid in
+    <foreach collection="pidList" item="item" open="(" close=")" separator=",">
+      #{item}
+    </foreach>
+  </select>
+
+  <select id="selectFirstWords" resultType="java.lang.String">
+    select first_word from db_car_category where is_del = 0 and first_word != ''
+  </select>
+
+  <select id="selectByFirstWord" parameterType="string" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from db_car_category where first_word = #{firstWord} and is_del = 0
+  </select>
+</mapper>

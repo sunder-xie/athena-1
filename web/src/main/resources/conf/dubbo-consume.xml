@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- ===============消费者 忽略错误     ==================================== -->
+
+    <!--car-->
+    <dubbo:reference check="false" interface="com.tqmall.tqmallstall.service.carcategory.CarCategoryService"
+                     id="carStallCategoryService" version="${dubbo.consume.stall.version}"/>
+
+    <!-- 保险平台获取服务包 -->
+    <dubbo:reference interface="com.tqmall.insurance.service.insurance.RpcPackageService"
+                     id="rpcPackageService" version="${dubbo.consume.insurance.version}" check="false"/>
+
+    <!-- vin码服务 -->
+    <dubbo:reference interface="com.tqmall.data.vin.client.VinCodeService"
+                     id="vinCodeService" version="${dubbo.consume.vin.version}" check="false"/>
+
+</beans>

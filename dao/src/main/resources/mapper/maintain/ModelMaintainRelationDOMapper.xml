@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.athena.dal.mapper.maintain.ModelMaintainRelationDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.athena.bean.entity.maintain.ModelMaintainRelationDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="VARCHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="INTEGER" />
+    <result column="modifier" property="modifier" jdbcType="INTEGER" />
+    <result column="model_id" property="modelId" jdbcType="INTEGER" />
+    <result column="first_time" property="firstTime" jdbcType="TIMESTAMP" />
+    <result column="mile" property="mile" jdbcType="INTEGER" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="service_type" property="serviceType" jdbcType="INTEGER" />
+    <result column="service_suggest" property="serviceSuggest" jdbcType="VARCHAR" />
+    <result column="service_use" property="serviceUse" jdbcType="VARCHAR" />
+    <result column="time_consuming" property="timeConsuming" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, is_deleted, gmt_create, gmt_modified, creator, modifier, model_id, first_time, 
+    mile, service_id, service_type, service_suggest, service_use, time_consuming, price
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from db_model_maintain_relation
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from db_model_maintain_relation
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tqmall.athena.bean.entity.maintain.ModelMaintainRelationDO" >
+    insert into db_model_maintain_relation (id, is_deleted, gmt_create, 
+      gmt_modified, creator, modifier, 
+      model_id, first_time, mile, 
+      service_id, service_type, service_suggest, 
+      service_use, time_consuming, price
+      )
+    values (#{id,jdbcType=INTEGER}, #{isDeleted,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP}, #{creator,jdbcType=INTEGER}, #{modifier,jdbcType=INTEGER}, 
+      #{modelId,jdbcType=INTEGER}, #{firstTime,jdbcType=TIMESTAMP}, #{mile,jdbcType=INTEGER}, 
+      #{serviceId,jdbcType=INTEGER}, #{serviceType,jdbcType=INTEGER}, #{serviceSuggest,jdbcType=VARCHAR}, 
+      #{serviceUse,jdbcType=VARCHAR}, #{timeConsuming,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tqmall.athena.bean.entity.maintain.ModelMaintainRelationDO" >
+    insert into db_model_maintain_relation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="modelId != null" >
+        model_id,
+      </if>
+      <if test="firstTime != null" >
+        first_time,
+      </if>
+      <if test="mile != null" >
+        mile,
+      </if>
+      <if test="serviceId != null" >
+        service_id,
+      </if>
+      <if test="serviceType != null" >
+        service_type,
+      </if>
+      <if test="serviceSuggest != null" >
+        service_suggest,
+      </if>
+      <if test="serviceUse != null" >
+        service_use,
+      </if>
+      <if test="timeConsuming != null" >
+        time_consuming,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=INTEGER},
+      </if>
+      <if test="modelId != null" >
+        #{modelId,jdbcType=INTEGER},
+      </if>
+      <if test="firstTime != null" >
+        #{firstTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mile != null" >
+        #{mile,jdbcType=INTEGER},
+      </if>
+      <if test="serviceId != null" >
+        #{serviceId,jdbcType=INTEGER},
+      </if>
+      <if test="serviceType != null" >
+        #{serviceType,jdbcType=INTEGER},
+      </if>
+      <if test="serviceSuggest != null" >
+        #{serviceSuggest,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceUse != null" >
+        #{serviceUse,jdbcType=VARCHAR},
+      </if>
+      <if test="timeConsuming != null" >
+        #{timeConsuming,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tqmall.athena.bean.entity.maintain.ModelMaintainRelationDO" >
+    update db_model_maintain_relation
+    <set >
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=INTEGER},
+      </if>
+      <if test="modelId != null" >
+        model_id = #{modelId,jdbcType=INTEGER},
+      </if>
+      <if test="firstTime != null" >
+        first_time = #{firstTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mile != null" >
+        mile = #{mile,jdbcType=INTEGER},
+      </if>
+      <if test="serviceId != null" >
+        service_id = #{serviceId,jdbcType=INTEGER},
+      </if>
+      <if test="serviceType != null" >
+        service_type = #{serviceType,jdbcType=INTEGER},
+      </if>
+      <if test="serviceSuggest != null" >
+        service_suggest = #{serviceSuggest,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceUse != null" >
+        service_use = #{serviceUse,jdbcType=VARCHAR},
+      </if>
+      <if test="timeConsuming != null" >
+        time_consuming = #{timeConsuming,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tqmall.athena.bean.entity.maintain.ModelMaintainRelationDO" >
+    update db_model_maintain_relation
+    set is_deleted = #{isDeleted,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      creator = #{creator,jdbcType=INTEGER},
+      modifier = #{modifier,jdbcType=INTEGER},
+      model_id = #{modelId,jdbcType=INTEGER},
+      first_time = #{firstTime,jdbcType=TIMESTAMP},
+      mile = #{mile,jdbcType=INTEGER},
+      service_id = #{serviceId,jdbcType=INTEGER},
+      service_type = #{serviceType,jdbcType=INTEGER},
+      service_suggest = #{serviceSuggest,jdbcType=VARCHAR},
+      service_use = #{serviceUse,jdbcType=VARCHAR},
+      time_consuming = #{timeConsuming,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectRelations" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from db_model_maintain_relation
+    where is_deleted = 'N'
+    and model_id = #{carId,jdbcType=INTEGER}
+    <if test="mile != null" >
+      and mile = #{mile,jdbcType=INTEGER}
+    </if>
+    order by mile,service_id
+  </select>
+
+  <select id="selectMiles" resultType="int" >
+    select distinct mile
+    from db_model_maintain_relation
+    where is_deleted = 'N'
+    and model_id = #{carId,jdbcType=INTEGER}
+    order by mile
+  </select>
+
+  <select id="selectCloseMiles" resultType="int" >
+    select #{mile} as mile
+    union all
+    select distinct mile
+    from db_model_maintain_relation
+    where is_deleted = 'N'
+    and model_id = #{carId,jdbcType=INTEGER}
+    order by mile
+  </select>
+  <select id="checkMile" resultType="int" >
+    select count(1)
+    from db_model_maintain_relation
+    where is_deleted = 'N'
+    and model_id = #{carId,jdbcType=INTEGER}
+    and mile = #{mile,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectMaintainDetail" resultType="com.tqmall.athena.bean.entity.maintain.MaintainDetail" >
+    select rel.model_id as modelId, rel.first_time as firstTime, rel.mile, rel.service_type as serviceType,
+    rel.service_suggest as serviceSuggest, rel.service_use as serviceUse, rel.time_consuming as timeConsuming, rel.price,
+    it.name as serviceName, it.unit, it.id as serviceId, it.sort
+    from db_model_maintain_relation rel, db_maintain_item it
+    where rel.is_deleted = 'N' and it.is_deleted = 'N'
+    and rel.service_id = it.id
+    and rel.model_id = #{carId,jdbcType=INTEGER}
+    <if test="mile != null" >
+      and rel.mile = #{mile,jdbcType=INTEGER}
+    </if>
+    order by rel.mile,it.sort
+  </select>
+
+  <select id="selectCarIdsByBrandId" resultType="int">
+    select distinct model_id
+    from db_model_maintain_relation
+    where is_deleted = 'N'
+    and car_brand_id = #{carId}
+  </select>
+
+  <select id="selectCarIdsBySeriesId" resultType="int">
+    select distinct model_id
+    from db_model_maintain_relation
+    where is_deleted = 'N'
+    and car_series_id = #{carId}
+  </select>
+
+  <select id="selectCarIdsByModelId" resultType="int">
+    select distinct model_id
+    from db_model_maintain_relation
+    where is_deleted = 'N'
+    and car_model_id = #{carId}
+  </select>
+
+  <select id="selectCarIdsByPowerId" resultType="int">
+    select distinct model_id
+    from db_model_maintain_relation
+    where is_deleted = 'N'
+    and car_power_id = #{carId}
+  </select>
+
+  <select id="selectCarIdsByYearId" resultType="int">
+    select distinct model_id
+    from db_model_maintain_relation
+    where is_deleted = 'N'
+    and car_year_id = #{carId}
+  </select>
+
+</mapper>

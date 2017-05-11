@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.athena.dal.crawl.common.CrawlCarDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.athena.bean.crawl.common.CrawlCarDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="source" property="source" jdbcType="TINYINT" />
+    <result column="car_brand_name" property="carBrandName" jdbcType="VARCHAR" />
+    <result column="car_factory_name" property="carFactoryName" jdbcType="VARCHAR" />
+    <result column="car_full_name" property="carFullName" jdbcType="VARCHAR" />
+    <result column="car_remarks" property="carRemarks" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, gmt_modified, gmt_create, source, car_brand_name, car_factory_name, car_full_name, 
+    car_remarks
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from crawl_car
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from crawl_car
+    where id = #{id}
+  </delete>
+  <insert id="insert" parameterType="com.tqmall.athena.bean.crawl.common.CrawlCarDO" >
+    insert into crawl_car (id, gmt_modified, gmt_create, 
+      source, car_brand_name, car_factory_name, 
+      car_full_name, car_remarks)
+    values (#{id}, #{gmtModified}, #{gmtCreate}, 
+      #{source}, #{carBrandName}, #{carFactoryName}, 
+      #{carFullName}, #{carRemarks})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tqmall.athena.bean.crawl.common.CrawlCarDO" >
+    insert into crawl_car
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="source != null" >
+        source,
+      </if>
+      <if test="carBrandName != null" >
+        car_brand_name,
+      </if>
+      <if test="carFactoryName != null" >
+        car_factory_name,
+      </if>
+      <if test="carFullName != null" >
+        car_full_name,
+      </if>
+      <if test="carRemarks != null" >
+        car_remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate},
+      </if>
+      <if test="source != null" >
+        #{source},
+      </if>
+      <if test="carBrandName != null" >
+        #{carBrandName},
+      </if>
+      <if test="carFactoryName != null" >
+        #{carFactoryName},
+      </if>
+      <if test="carFullName != null" >
+        #{carFullName},
+      </if>
+      <if test="carRemarks != null" >
+        #{carRemarks},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tqmall.athena.bean.crawl.common.CrawlCarDO" >
+    update crawl_car
+    <set >
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate},
+      </if>
+      <if test="source != null" >
+        source = #{source},
+      </if>
+      <if test="carBrandName != null" >
+        car_brand_name = #{carBrandName},
+      </if>
+      <if test="carFactoryName != null" >
+        car_factory_name = #{carFactoryName},
+      </if>
+      <if test="carFullName != null" >
+        car_full_name = #{carFullName},
+      </if>
+      <if test="carRemarks != null" >
+        car_remarks = #{carRemarks},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tqmall.athena.bean.crawl.common.CrawlCarDO" >
+    update crawl_car
+    set gmt_modified = #{gmtModified},
+      gmt_create = #{gmtCreate},
+      source = #{source},
+      car_brand_name = #{carBrandName},
+      car_factory_name = #{carFactoryName},
+      car_full_name = #{carFullName},
+      car_remarks = #{carRemarks}
+    where id = #{id}
+  </update>
+</mapper>

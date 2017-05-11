@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config description="">
+    <group name="default">
+        <!-- 数据库 -->
+        <property name="jdbc.driverClassName"
+                  defaultValue="com.mysql.jdbc.Driver"
+                  description="JDBC driver class name"/>
+        <property name="jdbc.url"
+                  defaultValue="jdbc:mysql://127.0.0.1:3306/dev_dataserver?characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull"
+                  description="JDBC URL"/>
+        <property name="jdbc.username" defaultValue=""
+                  description="JDBC username"/>
+        <property name="jdbc.password" defaultValue=""
+                  description="JDBC password"/>
+
+        <!-- dubbo -->
+        <property name="dubbo.application.name" defaultValue="tqmallAthena"/>
+        <property name="zookeeper.address" defaultValue="127.0.0.1:2181"/>
+        <property name="dubbo.port" defaultValue="19213"/>
+        <property name="dubbo.service.athena.version" defaultValue="1.0.0.daily"/>
+
+        <property name="dubbo.consume.stall.version" defaultValue="1.0.0.daily"/>
+        <property name="dubbo.consume.insurance.version" defaultValue="1.0.0.daily"/>
+        <property name="dubbo.consume.vin.version" defaultValue="1.0.0.daily"/>
+
+        <!-- redis -->
+        <property name="redis.host" defaultValue="redis://MySQL_Server:root@127.0.0.1:6379/30"/>
+
+        <!-- 项目环境(dev, test, stable, online) -->
+        <property name="project.environment" defaultValue="test"/>
+
+        <!-- 力洋vin码接口 -->
+        <property name="vin.server.host" defaultValue="http://"/>
+
+        <!-- 搜索 -->
+        <property name="search.host" defaultValue="http://"/>
+
+        <!-- 保险物料推荐相关配置 -->
+        <property name="oil.cat.id" defaultValue="5025" description="机油类目id"/>
+        <property name="oil.filter.cat.id" defaultValue="4343" description="机油滤清器类目id"/>
+        <property name="yun.xiu.brand.id" defaultValue="849" description="淘汽云修品牌id"/>
+
+
+    </group>
+    <script>
+        <!-- desfile:最终替换的目标文件-->
+        <generate template="application.properties.vm"
+                  destfile="/WEB-INF/classes/application.properties"
+                  charset="UTF-8"/>
+
+    </script>
+</config>

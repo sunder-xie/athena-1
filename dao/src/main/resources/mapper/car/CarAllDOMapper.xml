@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.athena.dal.mapper.car.CarAllDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.athena.bean.entity.car.CarAllDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="l_id" property="lId" jdbcType="VARCHAR" />
+    <result column="company" property="company" jdbcType="VARCHAR" />
+    <result column="brand" property="brand" jdbcType="VARCHAR" />
+    <result column="series" property="series" jdbcType="VARCHAR" />
+    <result column="year" property="year" jdbcType="CHAR" />
+    <result column="car_type" property="carType" jdbcType="VARCHAR" />
+    <result column="car_level" property="carLevel" jdbcType="VARCHAR" />
+    <result column="import_info" property="importInfo" jdbcType="VARCHAR" />
+    <result column="power" property="power" jdbcType="VARCHAR" />
+    <result column="new_l_id" property="newLId" jdbcType="VARCHAR" />
+    <result column="brand_id" property="brandId" jdbcType="INTEGER" />
+    <result column="series_id" property="seriesId" jdbcType="INTEGER" />
+    <result column="power_id" property="powerId" jdbcType="INTEGER" />
+    <result column="year_id" property="yearId" jdbcType="INTEGER" />
+    <result column="car_models" property="carModels" jdbcType="VARCHAR" />
+    <result column="car_models_id" property="carModelsId" jdbcType="INTEGER" />
+    <result column="model" property="model" jdbcType="VARCHAR" />
+    <result column="model_id" property="modelId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, l_id, company, brand, series, year, car_type, car_level, import_info, power, 
+    new_l_id, brand_id, series_id, power_id, year_id, car_models, car_models_id, model, 
+    model_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from db_car_all
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from db_car_all
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tqmall.athena.bean.entity.car.CarAllDO" >
+    insert into db_car_all (id, l_id, company, 
+      brand, series, year, car_type, 
+      car_level, import_info, power, 
+      new_l_id, brand_id, series_id, 
+      power_id, year_id, car_models, 
+      car_models_id, model, model_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{lId,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, 
+      #{brand,jdbcType=VARCHAR}, #{series,jdbcType=VARCHAR}, #{year,jdbcType=CHAR}, #{carType,jdbcType=VARCHAR}, 
+      #{carLevel,jdbcType=VARCHAR}, #{importInfo,jdbcType=VARCHAR}, #{power,jdbcType=VARCHAR}, 
+      #{newLId,jdbcType=VARCHAR}, #{brandId,jdbcType=INTEGER}, #{seriesId,jdbcType=INTEGER}, 
+      #{powerId,jdbcType=INTEGER}, #{yearId,jdbcType=INTEGER}, #{carModels,jdbcType=VARCHAR}, 
+      #{carModelsId,jdbcType=INTEGER}, #{model,jdbcType=VARCHAR}, #{modelId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tqmall.athena.bean.entity.car.CarAllDO" >
+    insert into db_car_all
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="lId != null" >
+        l_id,
+      </if>
+      <if test="company != null" >
+        company,
+      </if>
+      <if test="brand != null" >
+        brand,
+      </if>
+      <if test="series != null" >
+        series,
+      </if>
+      <if test="year != null" >
+        year,
+      </if>
+      <if test="carType != null" >
+        car_type,
+      </if>
+      <if test="carLevel != null" >
+        car_level,
+      </if>
+      <if test="importInfo != null" >
+        import_info,
+      </if>
+      <if test="power != null" >
+        power,
+      </if>
+      <if test="newLId != null" >
+        new_l_id,
+      </if>
+      <if test="brandId != null" >
+        brand_id,
+      </if>
+      <if test="seriesId != null" >
+        series_id,
+      </if>
+      <if test="powerId != null" >
+        power_id,
+      </if>
+      <if test="yearId != null" >
+        year_id,
+      </if>
+      <if test="carModels != null" >
+        car_models,
+      </if>
+      <if test="carModelsId != null" >
+        car_models_id,
+      </if>
+      <if test="model != null" >
+        model,
+      </if>
+      <if test="modelId != null" >
+        model_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="lId != null" >
+        #{lId,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null" >
+        #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="series != null" >
+        #{series,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=CHAR},
+      </if>
+      <if test="carType != null" >
+        #{carType,jdbcType=VARCHAR},
+      </if>
+      <if test="carLevel != null" >
+        #{carLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="importInfo != null" >
+        #{importInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="power != null" >
+        #{power,jdbcType=VARCHAR},
+      </if>
+      <if test="newLId != null" >
+        #{newLId,jdbcType=VARCHAR},
+      </if>
+      <if test="brandId != null" >
+        #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="seriesId != null" >
+        #{seriesId,jdbcType=INTEGER},
+      </if>
+      <if test="powerId != null" >
+        #{powerId,jdbcType=INTEGER},
+      </if>
+      <if test="yearId != null" >
+        #{yearId,jdbcType=INTEGER},
+      </if>
+      <if test="carModels != null" >
+        #{carModels,jdbcType=VARCHAR},
+      </if>
+      <if test="carModelsId != null" >
+        #{carModelsId,jdbcType=INTEGER},
+      </if>
+      <if test="model != null" >
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="modelId != null" >
+        #{modelId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tqmall.athena.bean.entity.car.CarAllDO" >
+    update db_car_all
+    <set >
+      <if test="lId != null" >
+        l_id = #{lId,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null" >
+        brand = #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="series != null" >
+        series = #{series,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        year = #{year,jdbcType=CHAR},
+      </if>
+      <if test="carType != null" >
+        car_type = #{carType,jdbcType=VARCHAR},
+      </if>
+      <if test="carLevel != null" >
+        car_level = #{carLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="importInfo != null" >
+        import_info = #{importInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="power != null" >
+        power = #{power,jdbcType=VARCHAR},
+      </if>
+      <if test="newLId != null" >
+        new_l_id = #{newLId,jdbcType=VARCHAR},
+      </if>
+      <if test="brandId != null" >
+        brand_id = #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="seriesId != null" >
+        series_id = #{seriesId,jdbcType=INTEGER},
+      </if>
+      <if test="powerId != null" >
+        power_id = #{powerId,jdbcType=INTEGER},
+      </if>
+      <if test="yearId != null" >
+        year_id = #{yearId,jdbcType=INTEGER},
+      </if>
+      <if test="carModels != null" >
+        car_models = #{carModels,jdbcType=VARCHAR},
+      </if>
+      <if test="carModelsId != null" >
+        car_models_id = #{carModelsId,jdbcType=INTEGER},
+      </if>
+      <if test="model != null" >
+        model = #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="modelId != null" >
+        model_id = #{modelId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tqmall.athena.bean.entity.car.CarAllDO" >
+    update db_car_all
+    set l_id = #{lId,jdbcType=VARCHAR},
+      company = #{company,jdbcType=VARCHAR},
+      brand = #{brand,jdbcType=VARCHAR},
+      series = #{series,jdbcType=VARCHAR},
+      year = #{year,jdbcType=CHAR},
+      car_type = #{carType,jdbcType=VARCHAR},
+      car_level = #{carLevel,jdbcType=VARCHAR},
+      import_info = #{importInfo,jdbcType=VARCHAR},
+      power = #{power,jdbcType=VARCHAR},
+      new_l_id = #{newLId,jdbcType=VARCHAR},
+      brand_id = #{brandId,jdbcType=INTEGER},
+      series_id = #{seriesId,jdbcType=INTEGER},
+      power_id = #{powerId,jdbcType=INTEGER},
+      year_id = #{yearId,jdbcType=INTEGER},
+      car_models = #{carModels,jdbcType=VARCHAR},
+      car_models_id = #{carModelsId,jdbcType=INTEGER},
+      model = #{model,jdbcType=VARCHAR},
+      model_id = #{modelId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+
+  <!--==========================================================-->
+
+  <select id="selectCarByLiyangId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from db_car_all
+    where new_l_id = #{newLId}
+    limit 1
+  </select>
+
+</mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.athena.dal.mapper.obd.ObdServiceDOMapper" >
+
+    <resultMap id="BaseResultMap" type="com.tqmall.athena.bean.entity.obd.ObdServiceDO">
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="obd_number" property="obdNumber" jdbcType="VARCHAR" />
+        <result column="obd_application" property="obdApplication" jdbcType="VARCHAR" />
+        <result column="obd_system" property="obdSystem" jdbcType="VARCHAR" />
+        <result column="obd_zh_definition" property="obdZhDefinition" jdbcType="VARCHAR" />
+        <result column="obd_en_definition" property="obdEnDefinition" jdbcType="VARCHAR" />
+        <result column="obd_background" property="obdBackground" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="base_column_list">
+        id,obd_number,obd_application,obd_system,obd_zh_definition,obd_en_definition,obd_background
+    </sql>
+
+    <select id="queryObdDOListByObdNum" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+             <include refid="base_column_list"/>
+        from db_obd_info
+        where obd_number = #{obdNumber} and is_delete = 'N'
+    </select>
+
+
+
+</mapper>

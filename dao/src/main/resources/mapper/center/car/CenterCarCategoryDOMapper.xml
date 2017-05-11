@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.athena.dal.mapper.center.car.CenterCarCategoryDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.athena.bean.entity.center.car.CenterCarCategoryDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="CHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="car_id" property="carId" jdbcType="INTEGER" />
+    <result column="first_cat_id" property="firstCatId" jdbcType="INTEGER" />
+    <result column="second_cat_id" property="secondCatId" jdbcType="INTEGER" />
+    <result column="third_cat_id" property="thirdCatId" jdbcType="INTEGER" />
+    <result column="first_cat_name" property="firstCatName" jdbcType="VARCHAR" />
+    <result column="second_cat_name" property="secondCatName" jdbcType="VARCHAR" />
+    <result column="third_cat_name" property="thirdCatName" jdbcType="VARCHAR" />
+    <result column="first_pic" property="firstPic" jdbcType="VARCHAR" />
+    <result column="second_pic" property="secondPic" jdbcType="VARCHAR" />
+    <result column="third_pic" property="thirdPic" jdbcType="VARCHAR" />
+    <result column="first_cat_letter" property="firstCatLetter" jdbcType="CHAR" />
+    <result column="second_cat_letter" property="secondCatLetter" jdbcType="CHAR" />
+    <result column="third_cat_letter" property="thirdCatLetter" jdbcType="CHAR" />
+    <result column="vehicle_code" property="vehicleCode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, car_id, first_cat_id, second_cat_id, third_cat_id,
+    first_cat_name, second_cat_name, third_cat_name, first_pic, second_pic, third_pic, 
+    first_cat_letter, second_cat_letter, third_cat_letter, vehicle_code
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from center_car_cate_relation
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from center_car_cate_relation
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tqmall.athena.bean.entity.center.car.CenterCarCategoryDO" >
+    insert into center_car_cate_relation (id, is_deleted, gmt_create, 
+      gmt_modified, car_id, first_cat_id, 
+      second_cat_id, third_cat_id, first_cat_name, 
+      second_cat_name, third_cat_name, first_pic, 
+      second_pic, third_pic, first_cat_letter, 
+      second_cat_letter, third_cat_letter, vehicle_code
+      )
+    values (#{id,jdbcType=INTEGER}, #{isDeleted,jdbcType=CHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP}, #{carId,jdbcType=INTEGER}, #{firstCatId,jdbcType=INTEGER}, 
+      #{secondCatId,jdbcType=INTEGER}, #{thirdCatId,jdbcType=INTEGER}, #{firstCatName,jdbcType=VARCHAR}, 
+      #{secondCatName,jdbcType=VARCHAR}, #{thirdCatName,jdbcType=VARCHAR}, #{firstPic,jdbcType=VARCHAR}, 
+      #{secondPic,jdbcType=VARCHAR}, #{thirdPic,jdbcType=VARCHAR}, #{firstCatLetter,jdbcType=CHAR}, 
+      #{secondCatLetter,jdbcType=CHAR}, #{thirdCatLetter,jdbcType=CHAR}, #{vehicleCode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tqmall.athena.bean.entity.center.car.CenterCarCategoryDO" >
+    insert into center_car_cate_relation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+      <if test="carId != null" >
+        car_id,
+      </if>
+      <if test="firstCatId != null" >
+        first_cat_id,
+      </if>
+      <if test="secondCatId != null" >
+        second_cat_id,
+      </if>
+      <if test="thirdCatId != null" >
+        third_cat_id,
+      </if>
+      <if test="firstCatName != null" >
+        first_cat_name,
+      </if>
+      <if test="secondCatName != null" >
+        second_cat_name,
+      </if>
+      <if test="thirdCatName != null" >
+        third_cat_name,
+      </if>
+      <if test="firstPic != null" >
+        first_pic,
+      </if>
+      <if test="secondPic != null" >
+        second_pic,
+      </if>
+      <if test="thirdPic != null" >
+        third_pic,
+      </if>
+      <if test="firstCatLetter != null" >
+        first_cat_letter,
+      </if>
+      <if test="secondCatLetter != null" >
+        second_cat_letter,
+      </if>
+      <if test="thirdCatLetter != null" >
+        third_cat_letter,
+      </if>
+      <if test="vehicleCode != null" >
+        vehicle_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="carId != null" >
+        #{carId,jdbcType=INTEGER},
+      </if>
+      <if test="firstCatId != null" >
+        #{firstCatId,jdbcType=INTEGER},
+      </if>
+      <if test="secondCatId != null" >
+        #{secondCatId,jdbcType=INTEGER},
+      </if>
+      <if test="thirdCatId != null" >
+        #{thirdCatId,jdbcType=INTEGER},
+      </if>
+      <if test="firstCatName != null" >
+        #{firstCatName,jdbcType=VARCHAR},
+      </if>
+      <if test="secondCatName != null" >
+        #{secondCatName,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdCatName != null" >
+        #{thirdCatName,jdbcType=VARCHAR},
+      </if>
+      <if test="firstPic != null" >
+        #{firstPic,jdbcType=VARCHAR},
+      </if>
+      <if test="secondPic != null" >
+        #{secondPic,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdPic != null" >
+        #{thirdPic,jdbcType=VARCHAR},
+      </if>
+      <if test="firstCatLetter != null" >
+        #{firstCatLetter,jdbcType=CHAR},
+      </if>
+      <if test="secondCatLetter != null" >
+        #{secondCatLetter,jdbcType=CHAR},
+      </if>
+      <if test="thirdCatLetter != null" >
+        #{thirdCatLetter,jdbcType=CHAR},
+      </if>
+      <if test="vehicleCode != null" >
+        #{vehicleCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tqmall.athena.bean.entity.center.car.CenterCarCategoryDO" >
+    update center_car_cate_relation
+    <set >
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="carId != null" >
+        car_id = #{carId,jdbcType=INTEGER},
+      </if>
+      <if test="firstCatId != null" >
+        first_cat_id = #{firstCatId,jdbcType=INTEGER},
+      </if>
+      <if test="secondCatId != null" >
+        second_cat_id = #{secondCatId,jdbcType=INTEGER},
+      </if>
+      <if test="thirdCatId != null" >
+        third_cat_id = #{thirdCatId,jdbcType=INTEGER},
+      </if>
+      <if test="firstCatName != null" >
+        first_cat_name = #{firstCatName,jdbcType=VARCHAR},
+      </if>
+      <if test="secondCatName != null" >
+        second_cat_name = #{secondCatName,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdCatName != null" >
+        third_cat_name = #{thirdCatName,jdbcType=VARCHAR},
+      </if>
+      <if test="firstPic != null" >
+        first_pic = #{firstPic,jdbcType=VARCHAR},
+      </if>
+      <if test="secondPic != null" >
+        second_pic = #{secondPic,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdPic != null" >
+        third_pic = #{thirdPic,jdbcType=VARCHAR},
+      </if>
+      <if test="firstCatLetter != null" >
+        first_cat_letter = #{firstCatLetter,jdbcType=CHAR},
+      </if>
+      <if test="secondCatLetter != null" >
+        second_cat_letter = #{secondCatLetter,jdbcType=CHAR},
+      </if>
+      <if test="thirdCatLetter != null" >
+        third_cat_letter = #{thirdCatLetter,jdbcType=CHAR},
+      </if>
+      <if test="vehicleCode != null" >
+        vehicle_code = #{vehicleCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+
+  <select id="selectListByDO" resultMap="BaseResultMap" parameterType="com.tqmall.athena.bean.entity.center.car.CenterCarCategoryDO" >
+    select
+    <include refid="Base_Column_List" />
+    from center_car_cate_relation
+    <where>
+      is_deleted = 'N'
+      <if test="carId != null" >
+        and car_id = #{carId,jdbcType=INTEGER}
+      </if>
+      <if test="vehicleCode != null" >
+        and vehicle_code = #{vehicleCode,jdbcType=VARCHAR}
+      </if>
+
+    </where>
+  </select>
+</mapper>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.athena.dal.mapper.goods.GoodsCategoryDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.athena.bean.entity.goods.GoodsCategoryDO" >
+    <id column="id" property="catId" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="CHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="INTEGER" />
+    <result column="modifier" property="modifier" jdbcType="INTEGER" />
+
+    <result column="goods_type" property="goodsType" jdbcType="INTEGER" />
+    <result column="cat_name" property="catName" jdbcType="VARCHAR" />
+    <result column="key_words" property="keywords" jdbcType="VARCHAR" />
+    <result column="cat_desc" property="catDesc" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="sort_order" property="sortOrder" jdbcType="INTEGER" />
+    <result column="measure_unit" property="measureUnit" jdbcType="VARCHAR" />
+    <result column="is_show" property="isShow" jdbcType="TINYINT" />
+    <result column="category_thumb" property="categoryThumb" jdbcType="VARCHAR" />
+    <result column="category_img" property="categoryImg" jdbcType="VARCHAR" />
+    <result column="original_img" property="originalImg" jdbcType="VARCHAR" />
+    <result column="category_sn" property="categorySn" jdbcType="VARCHAR" />
+    <result column="cat_kind" property="catKind" jdbcType="TINYINT" />
+    <result column="cat_level" property="catLevel" jdbcType="TINYINT" />
+    <result column="cat_code" property="catCode" jdbcType="VARCHAR" />
+    <result column="vehicle_code" property="vehicleCode" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, goods_type, cat_name, key_words, cat_desc, parent_id, sort_order,
+    measure_unit, is_show, category_thumb, category_img,
+    original_img, category_sn, cat_kind, cat_level, cat_code, vehicle_code
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Short" >
+    select 
+    <include refid="Base_Column_List" />
+    from db_goods_category
+    where id = #{catId}
+  </select>
+
+
+  <select id="selectByCondition" resultMap="BaseResultMap"
+          parameterType="com.tqmall.athena.bean.bizBean.params.CategoryQueryParam">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM db_goods_category
+    <where>
+      is_deleted = 'N'
+      <if test="id != null">
+        AND id = #{id}
+      </if>
+      <if test="pid != null">
+        AND parent_id = #{pid}
+      </if>
+      <if test="level != null">
+        AND cat_level = #{level}
+      </if>
+      <if test="vehicleCode != null">
+        AND vehicle_code = #{vehicleCode}
+      </if>
+      <if test="isShow != null">
+        AND is_show = #{isShow}
+      </if>
+    </where>
+  </select>
+
+</mapper>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.athena.dal.mapper.center.category.CenterCategoryDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.athena.bean.entity.center.category.CenterCategoryDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="CHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="first_letter" property="firstLetter" jdbcType="CHAR" />
+    <result column="cat_name" property="catName" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="sort_order" property="sortOrder" jdbcType="INTEGER" />
+    <result column="cat_pic" property="catPic" jdbcType="VARCHAR" />
+    <result column="cat_kind" property="catKind" jdbcType="INTEGER" />
+    <result column="cat_level" property="catLevel" jdbcType="INTEGER" />
+    <result column="cat_code" property="catCode" jdbcType="VARCHAR" />
+    <result column="vehicle_code" property="vehicleCode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, is_deleted, gmt_create, gmt_modified, first_letter, cat_name, parent_id, sort_order,
+    cat_pic, cat_kind, cat_level, cat_code, vehicle_code
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from center_category
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from center_category
+    where id = #{id}
+  </delete>
+  <insert id="insert" parameterType="com.tqmall.athena.bean.entity.center.category.CenterCategoryDO" >
+    insert into center_category (id, is_deleted, gmt_create, 
+      gmt_modified, first_letter, cat_name, 
+      parent_id, sort_order, cat_pic, 
+      cat_kind, cat_level, cat_code, 
+      vehicle_code)
+    values (#{id}, #{isDeleted}, #{gmtCreate}, 
+      #{gmtModified}, #{firstLetter}, #{catName}, 
+      #{parentId}, #{sortOrder}, #{catPic}, 
+      #{catKind}, #{catLevel}, #{catCode}, 
+      #{vehicleCode})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tqmall.athena.bean.entity.center.category.CenterCategoryDO" >
+    insert into center_category
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+      <if test="firstLetter != null" >
+        first_letter,
+      </if>
+      <if test="catName != null" >
+        cat_name,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="sortOrder != null" >
+        sort_order,
+      </if>
+      <if test="catPic != null" >
+        cat_pic,
+      </if>
+      <if test="catKind != null" >
+        cat_kind,
+      </if>
+      <if test="catLevel != null" >
+        cat_level,
+      </if>
+      <if test="catCode != null" >
+        cat_code,
+      </if>
+      <if test="vehicleCode != null" >
+        vehicle_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified},
+      </if>
+      <if test="firstLetter != null" >
+        #{firstLetter},
+      </if>
+      <if test="catName != null" >
+        #{catName},
+      </if>
+      <if test="parentId != null" >
+        #{parentId},
+      </if>
+      <if test="sortOrder != null" >
+        #{sortOrder},
+      </if>
+      <if test="catPic != null" >
+        #{catPic},
+      </if>
+      <if test="catKind != null" >
+        #{catKind},
+      </if>
+      <if test="catLevel != null" >
+        #{catLevel},
+      </if>
+      <if test="catCode != null" >
+        #{catCode},
+      </if>
+      <if test="vehicleCode != null" >
+        #{vehicleCode},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tqmall.athena.bean.entity.center.category.CenterCategoryDO" >
+    update center_category
+    <set >
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate},
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified},
+      </if>
+      <if test="firstLetter != null" >
+        first_letter = #{firstLetter},
+      </if>
+      <if test="catName != null" >
+        cat_name = #{catName},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId},
+      </if>
+      <if test="sortOrder != null" >
+        sort_order = #{sortOrder},
+      </if>
+      <if test="catPic != null" >
+        cat_pic = #{catPic},
+      </if>
+      <if test="catKind != null" >
+        cat_kind = #{catKind},
+      </if>
+      <if test="catLevel != null" >
+        cat_level = #{catLevel},
+      </if>
+      <if test="catCode != null" >
+        cat_code = #{catCode},
+      </if>
+      <if test="vehicleCode != null" >
+        vehicle_code = #{vehicleCode},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tqmall.athena.bean.entity.center.category.CenterCategoryDO" >
+    update center_category
+    set is_deleted = #{isDeleted},
+      gmt_create = #{gmtCreate},
+      gmt_modified = #{gmtModified},
+      first_letter = #{firstLetter},
+      cat_name = #{catName},
+      parent_id = #{parentId},
+      sort_order = #{sortOrder},
+      cat_pic = #{catPic},
+      cat_kind = #{catKind},
+      cat_level = #{catLevel},
+      cat_code = #{catCode},
+      vehicle_code = #{vehicleCode}
+    where id = #{id}
+  </update>
+</mapper>

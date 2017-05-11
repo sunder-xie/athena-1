@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.athena.dal.mapper.center.goods.CenterGoodsCarDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.athena.bean.entity.center.goods.CenterGoodsCarDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="CHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
+    <result column="car_id" property="carId" jdbcType="INTEGER" />
+
+    <result column="pic_id" property="picId" jdbcType="INTEGER" />
+    <result column="subjoin_id" property="subjoinId" jdbcType="INTEGER" />
+    <result column="model_id" property="modelId" jdbcType="INTEGER" />
+
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, goods_id, car_id, pic_id, subjoin_id, model_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from center_goods_car_relation
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+
+  <select id="selectByDO" resultMap="BaseResultMap" parameterType="com.tqmall.athena.bean.entity.center.goods.CenterGoodsCarDO" >
+    select
+    <include refid="Base_Column_List" />
+    from center_goods_car_relation
+    <where>
+      is_deleted = 'N'
+      <if test="goodsId != null" >
+        and goods_id = #{goodsId,jdbcType=INTEGER}
+      </if>
+      <if test="carId != null" >
+        and car_id = #{carId,jdbcType=INTEGER}
+      </if>
+      <if test="modelId != null" >
+        and model_id = #{modelId,jdbcType=INTEGER}
+      </if>
+      <if test="picId != null" >
+        and pic_id = #{picId,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+
+</mapper>

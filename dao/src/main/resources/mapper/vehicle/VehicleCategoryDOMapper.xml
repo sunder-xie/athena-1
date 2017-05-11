@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.athena.dal.mapper.vehicle.VehicleCategoryDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.athena.bean.entity.vehicle.VehicleCategoryDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="CHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="INTEGER" />
+    <result column="modifier" property="modifier" jdbcType="INTEGER" />
+    <result column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="category_name" property="categoryName" jdbcType="VARCHAR" />
+    <result column="grade" property="grade" jdbcType="SMALLINT" />
+    <result column="sort" property="sort" jdbcType="SMALLINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, pid, category_name, grade, sort
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from db_vehicle_category
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from db_vehicle_category
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tqmall.athena.bean.entity.vehicle.VehicleCategoryDO" >
+    insert into db_vehicle_category (id, is_deleted, gmt_create, 
+      gmt_modified, creator, modifier, 
+      pid, category_name, grade
+      )
+    values (#{id,jdbcType=INTEGER}, #{isDeleted,jdbcType=CHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP}, #{creator,jdbcType=INTEGER}, #{modifier,jdbcType=INTEGER}, 
+      #{pid,jdbcType=INTEGER}, #{categoryName,jdbcType=VARCHAR}, #{grade,jdbcType=SMALLINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tqmall.athena.bean.entity.vehicle.VehicleCategoryDO" >
+    insert into db_vehicle_category
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="categoryName != null" >
+        category_name,
+      </if>
+      <if test="grade != null" >
+        grade,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="categoryName != null" >
+        #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        #{grade,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tqmall.athena.bean.entity.vehicle.VehicleCategoryDO" >
+    update db_vehicle_category
+    <set >
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="categoryName != null" >
+        category_name = #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        grade = #{grade,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tqmall.athena.bean.entity.vehicle.VehicleCategoryDO" >
+    update db_vehicle_category
+    set is_deleted = #{isDeleted,jdbcType=CHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      creator = #{creator,jdbcType=INTEGER},
+      modifier = #{modifier,jdbcType=INTEGER},
+      pid = #{pid,jdbcType=INTEGER},
+      category_name = #{categoryName,jdbcType=VARCHAR},
+      grade = #{grade,jdbcType=SMALLINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByPid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from db_vehicle_category
+    where pid = #{pid,jdbcType=INTEGER}
+    and is_deleted = 'N'
+  </select>
+
+</mapper>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:provider timeout="60000" />
+    <!-- ===============服务提供方      ==================================== -->
+
+    <!--maintain-->
+    <bean id="maintainService" class="com.tqmall.athena.service.maintain.MaintainServiceImpl" />
+    <dubbo:service interface="com.tqmall.athena.client.maintain.MaintainService"
+                   ref="maintainService" version="${dubbo.service.athena.version}" owner="zhangting.huang"/>
+
+    <!-- vehicle -->
+    <bean id="vehicleService" class="com.tqmall.athena.service.vehicle.VehicleServiceImpl" />
+    <dubbo:service interface="com.tqmall.athena.client.vehicle.VehicleService"
+                   ref="vehicleService" version="${dubbo.service.athena.version}" owner="zhangting.huang"/>
+
+    <!-- vehicleServiceExtend -->
+    <bean id="vehicleServiceExtend" class="com.tqmall.athena.service.vehicle.VehicleServiceExtendImpl" />
+    <dubbo:service interface="com.tqmall.athena.client.vehicle.VehicleServiceExtend"
+                   ref="vehicleServiceExtend" version="${dubbo.service.athena.version}" owner="zhangting.huang"/>
+
+
+    <!-- 车型分类扩展接口 -->
+    <bean id="carServiceExtend" class="com.tqmall.athena.service.car.CarServiceExtendImpl" />
+    <dubbo:service interface="com.tqmall.athena.client.car.CarServiceExtend"
+                   ref="carServiceExtend" version="${dubbo.service.athena.version}" owner="zhangting.huang"/>
+
+    <!--car-->
+    <bean id="carCategoryService" class="com.tqmall.athena.service.car.CarCategoryServiceImpl" />
+    <dubbo:service interface="com.tqmall.athena.client.car.CarCategoryService"
+                   ref="carCategoryService" version="${dubbo.service.athena.version}" owner="xigeng.zhong"/>
+
+
+    <!-- goodsCategory -->
+    <bean id="goodsCategoryService" class="com.tqmall.athena.service.goods.GoodsCategoryServiceImpl" />
+    <dubbo:service interface="com.tqmall.athena.client.goods.GoodsCategoryService"
+                   ref="goodsCategoryService" version="${dubbo.service.athena.version}" owner="zhangting.huang"/>
+
+    <!-- insurance -->
+    <bean id="insuranceService" class="com.tqmall.athena.service.insurance.InsuranceServiceImpl" />
+    <dubbo:service interface="com.tqmall.athena.client.insurance.InsuranceService"
+                   ref="insuranceService" version="${dubbo.service.athena.version}" owner="zhangting.huang"/>
+
+
+    <!-- centerCar -->
+    <bean id="centerCarService" class="com.tqmall.athena.service.center.car.CenterCarServiceImpl" />
+    <dubbo:service interface="com.tqmall.athena.client.center.car.CenterCarService"
+                   ref="centerCarService" version="${dubbo.service.athena.version}" owner="zhangting.huang"/>
+
+    <!--centerCarCate,车型下的分类信息-->
+    <bean id="centerCarCatService" class="com.tqmall.athena.service.center.car.CenterCarCatServiceImpl" />
+    <dubbo:service interface="com.tqmall.athena.client.center.car.CenterCarCatService"
+                   ref="centerCarCatService" version="${dubbo.service.athena.version}" owner="xigeng.zhong"/>
+
+    <!-- center goods -->
+    <bean id="centerGoodsService" class="com.tqmall.athena.service.center.goods.CenterGoodsServiceImpl" />
+    <dubbo:service interface="com.tqmall.athena.client.center.goods.CenterGoodsService"
+                   ref="centerGoodsService" version="${dubbo.service.athena.version}" owner="zhangting.huang"/>
+
+    <!-- bank -->
+    <bean id="bankService" class="com.tqmall.athena.service.bank.BankServiceImpl" />
+    <dubbo:service interface="com.tqmall.athena.client.bank.BankService"
+                   ref="bankService" version="${dubbo.service.athena.version}" owner="lyj"/>
+
+
+    <!-- obd车型 -->
+    <bean id="obdVehicleService" class="com.tqmall.athena.service.obd.ObdVehicleServiceImpl" />
+    <dubbo:service interface="com.tqmall.athena.client.obd.ObdVehicleService"
+                   ref="obdVehicleService" version="${dubbo.service.athena.version}" owner="zhangting.huang"/>
+
+
+    <!-- car vin -->
+    <bean id="carVinService" class="com.tqmall.athena.service.car.CarVinServiceImpl" />
+    <dubbo:service interface="com.tqmall.athena.client.car.CarVinService"
+                   ref="carVinService" version="${dubbo.service.athena.version}" owner="zhangting.huang"/>
+
+    <!-- 保险车型适配商品接口 -->
+    <bean id="insuranceCarGoodsService" class="com.tqmall.athena.service.insurance.CarGoodsServiceImpl" />
+    <dubbo:service interface="com.tqmall.athena.client.insurance.CarGoodsService"
+                   ref="insuranceCarGoodsService" version="${dubbo.service.athena.version}" owner="zhangting.huang"/>
+
+    <!-- 商品服务 -->
+    <bean id="goodsService" class="com.tqmall.athena.service.goods.GoodsServiceImpl" />
+    <dubbo:service interface="com.tqmall.athena.client.goods.GoodsService"
+                   ref="goodsService" version="${dubbo.service.athena.version}" owner="zhangting.huang"/>
+    <!--商品属性-->
+    <bean id="centerGoodsAttrService" class="com.tqmall.athena.service.center.goods.CenterGoodsAttrServiceImpl" />
+    <dubbo:service interface="com.tqmall.athena.client.center.goods.CenterGoodsAttrService"
+                   ref="centerGoodsAttrService" version="${dubbo.service.athena.version}" owner="xigeng.zhong"/>
+
+    <!--展示分类-->
+    <bean id="centerCategoryService" class="com.tqmall.athena.service.center.category.CenterCategoryServiceImpl" />
+    <dubbo:service interface="com.tqmall.athena.client.center.category.CenterCategoryService"
+                   ref="centerCategoryService" version="${dubbo.service.athena.version}" owner="xigeng.zhong"/>
+
+    <!--故障码查询-->
+    <bean id="obdService" class="com.tqmall.athena.service.obd.ObdServiceImpl"/>
+    <dubbo:service interface="com.tqmall.athena.client.obd.ObdService"
+                    ref="obdService" version="${dubbo.service.athena.version}" owner="heng.zhou"/>
+
+</beans>

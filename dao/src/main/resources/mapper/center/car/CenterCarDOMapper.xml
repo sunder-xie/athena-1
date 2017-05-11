@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.athena.dal.mapper.center.car.CenterCarDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.athena.bean.entity.center.car.CenterCarDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="CHAR" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="power" property="power" jdbcType="VARCHAR" />
+    <result column="level" property="level" jdbcType="TINYINT" />
+    <result column="first_word" property="firstWord" jdbcType="CHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="model" property="model" jdbcType="VARCHAR" />
+    <result column="series" property="series" jdbcType="VARCHAR" />
+    <result column="brand" property="brand" jdbcType="VARCHAR" />
+    <result column="company" property="company" jdbcType="VARCHAR" />
+    <result column="country" property="country" jdbcType="TINYINT" />
+    <result column="car_type" property="carType" jdbcType="VARCHAR" />
+    <result column="car_level" property="carLevel" jdbcType="VARCHAR" />
+    <result column="import_info" property="importInfo" jdbcType="CHAR" />
+    <result column="logo" property="logo" jdbcType="VARCHAR" />
+    <result column="is_hot" property="isHot" jdbcType="BIT" />
+    <result column="year" property="year" jdbcType="VARCHAR" />
+    <result column="engine_type" property="engineType" jdbcType="VARCHAR" />
+    <result column="chassis_number" property="chassisNumber" jdbcType="VARCHAR" />
+    <result column="guide_price" property="guidePrice" jdbcType="VARCHAR" />
+    <result column="model_id" property="modelId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, power, level, first_word, sort, pid,
+    model, series, brand, company, country, car_type, car_level, import_info, logo, is_hot, 
+    year, engine_type, chassis_number, guide_price, model_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from center_car_for_fix
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+
+  <select id="selectByPid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from center_car_for_fix
+    where pid = #{pid,jdbcType=INTEGER}
+    and is_deleted = 'N'
+  </select>
+
+  <select id="selectByLevel" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from center_car_for_fix
+    where level = #{level,jdbcType=TINYINT}
+    and is_deleted = 'N'
+  </select>
+
+  <select id="selectCarListByModelId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from center_car_for_fix
+    where model_id = #{modelId,jdbcType=INTEGER}
+    and is_deleted = 'N'
+  </select>
+
+</mapper>

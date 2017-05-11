@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.athena.dal.mapper.center.category.CenterCategoryShowDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.athena.bean.entity.center.category.CenterCategoryShowDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="CHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="INTEGER" />
+    <result column="modifier" property="modifier" jdbcType="INTEGER" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="cat_name_mapping" property="catNameMapping" jdbcType="VARCHAR" />
+    <result column="cat_id" property="catId" jdbcType="INTEGER" />
+    <result column="cat_name" property="catName" jdbcType="VARCHAR" />
+    <result column="category_thumb" property="categoryThumb" jdbcType="VARCHAR" />
+    <result column="category_img" property="categoryImg" jdbcType="VARCHAR" />
+    <result column="cat_mapping_level" property="catMappingLevel" jdbcType="INTEGER" />
+    <result column="sort_order" property="sortOrder" jdbcType="INTEGER" />
+    <result column="vehicle_code" property="vehicleCode" jdbcType="VARCHAR" />
+    <result column="product_line" property="productLine" jdbcType="VARCHAR" />
+    <result column="show_source" property="showSource" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, is_deleted, gmt_create, gmt_modified, creator, modifier, parent_id, cat_name_mapping, 
+    cat_id, cat_name, category_thumb, category_img, cat_mapping_level, sort_order, vehicle_code, 
+    product_line, show_source
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from center_category_for_show
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from center_category_for_show
+    where id = #{id}
+  </delete>
+  <insert id="insertSelective" parameterType="com.tqmall.athena.bean.entity.center.category.CenterCategoryShowDO" >
+    insert into center_category_for_show
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="catNameMapping != null" >
+        cat_name_mapping,
+      </if>
+      <if test="catId != null" >
+        cat_id,
+      </if>
+      <if test="catName != null" >
+        cat_name,
+      </if>
+      <if test="categoryThumb != null" >
+        category_thumb,
+      </if>
+      <if test="categoryImg != null" >
+        category_img,
+      </if>
+      <if test="catMappingLevel != null" >
+        cat_mapping_level,
+      </if>
+      <if test="sortOrder != null" >
+        sort_order,
+      </if>
+      <if test="vehicleCode != null" >
+        vehicle_code,
+      </if>
+      <if test="productLine != null" >
+        product_line,
+      </if>
+      <if test="showSource != null" >
+        show_source,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified},
+      </if>
+      <if test="creator != null" >
+        #{creator},
+      </if>
+      <if test="modifier != null" >
+        #{modifier},
+      </if>
+      <if test="parentId != null" >
+        #{parentId},
+      </if>
+      <if test="catNameMapping != null" >
+        #{catNameMapping},
+      </if>
+      <if test="catId != null" >
+        #{catId},
+      </if>
+      <if test="catName != null" >
+        #{catName},
+      </if>
+      <if test="categoryThumb != null" >
+        #{categoryThumb},
+      </if>
+      <if test="categoryImg != null" >
+        #{categoryImg},
+      </if>
+      <if test="catMappingLevel != null" >
+        #{catMappingLevel},
+      </if>
+      <if test="sortOrder != null" >
+        #{sortOrder},
+      </if>
+      <if test="vehicleCode != null" >
+        #{vehicleCode},
+      </if>
+      <if test="productLine != null" >
+        #{productLine},
+      </if>
+      <if test="showSource != null" >
+        #{showSource},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tqmall.athena.bean.entity.center.category.CenterCategoryShowDO" >
+    update center_category_for_show
+    <set >
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate},
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId},
+      </if>
+      <if test="catNameMapping != null" >
+        cat_name_mapping = #{catNameMapping},
+      </if>
+      <if test="catId != null" >
+        cat_id = #{catId},
+      </if>
+      <if test="catName != null" >
+        cat_name = #{catName},
+      </if>
+      <if test="categoryThumb != null" >
+        category_thumb = #{categoryThumb},
+      </if>
+      <if test="categoryImg != null" >
+        category_img = #{categoryImg},
+      </if>
+      <if test="catMappingLevel != null" >
+        cat_mapping_level = #{catMappingLevel},
+      </if>
+      <if test="sortOrder != null" >
+        sort_order = #{sortOrder},
+      </if>
+      <if test="vehicleCode != null" >
+        vehicle_code = #{vehicleCode},
+      </if>
+      <if test="productLine != null" >
+        product_line = #{productLine},
+      </if>
+      <if test="showSource != null" >
+        show_source = #{showSource},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+
+  <select id="selectByShowDO" resultMap="BaseResultMap" parameterType="com.tqmall.athena.bean.entity.center.category.CenterCategoryShowDO" >
+    select
+    <include refid="Base_Column_List" />
+    from center_category_for_show
+    where is_deleted = 'N'
+    <if test="parentId != null" >
+      and parent_id = #{parentId}
+    </if>
+    <if test="catNameMapping != null" >
+      and cat_name_mapping = #{catNameMapping}
+    </if>
+    <if test="catId != null" >
+      and cat_id = #{catId}
+    </if>
+    <if test="catName != null" >
+      and cat_name = #{catName}
+    </if>
+    <if test="catMappingLevel != null" >
+      and cat_mapping_level = #{catMappingLevel}
+    </if>
+    <if test="sortOrder != null" >
+      and sort_order = #{sortOrder}
+    </if>
+    <if test="vehicleCode != null" >
+      and vehicle_code = #{vehicleCode}
+    </if>
+    <if test="productLine != null" >
+      and product_line = #{productLine}
+    </if>
+    <if test="showSource != null" >
+      and show_source = #{showSource}
+    </if>
+
+    order by sort_order
+  </select>
+
+</mapper>

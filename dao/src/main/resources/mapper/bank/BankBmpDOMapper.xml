@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqmall.athena.dal.mapper.bank.BankBmpDOMapper" >
+  <resultMap id="BaseResultMap" type="com.tqmall.athena.bean.entity.bank.BankBmpDO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="is_deleted" property="isDeleted" jdbcType="CHAR" />
+    <result column="keyword" property="keyword" jdbcType="VARCHAR" />
+    <result column="province_id" property="provinceId" jdbcType="INTEGER" />
+    <result column="city_id" property="cityId" jdbcType="INTEGER" />
+    <result column="district_id" property="districtId" jdbcType="INTEGER" />
+    <result column="bmp_name" property="bmpName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, keyword, province_id, city_id, district_id, bmp_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from db_bank_bmp
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from db_bank_bmp
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tqmall.athena.bean.entity.bank.BankBmpDO" >
+    insert into db_bank_bmp (id, gmt_create, gmt_modified, 
+      is_deleted, keyword, province_id, 
+      city_id, district_id, bmp_name
+      )
+    values (#{id,jdbcType=INTEGER}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
+      #{isDeleted,jdbcType=CHAR}, #{keyword,jdbcType=VARCHAR}, #{provinceId,jdbcType=INTEGER}, 
+      #{cityId,jdbcType=INTEGER}, #{districtId,jdbcType=INTEGER}, #{bmpName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tqmall.athena.bean.entity.bank.BankBmpDO" >
+    insert into db_bank_bmp
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="keyword != null" >
+        keyword,
+      </if>
+      <if test="provinceId != null" >
+        province_id,
+      </if>
+      <if test="cityId != null" >
+        city_id,
+      </if>
+      <if test="districtId != null" >
+        district_id,
+      </if>
+      <if test="bmpName != null" >
+        bmp_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="keyword != null" >
+        #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceId != null" >
+        #{provinceId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null" >
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="districtId != null" >
+        #{districtId,jdbcType=INTEGER},
+      </if>
+      <if test="bmpName != null" >
+        #{bmpName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tqmall.athena.bean.entity.bank.BankBmpDO" >
+    update db_bank_bmp
+    <set >
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=CHAR},
+      </if>
+      <if test="keyword != null" >
+        keyword = #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceId != null" >
+        province_id = #{provinceId,jdbcType=INTEGER},
+      </if>
+      <if test="cityId != null" >
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="districtId != null" >
+        district_id = #{districtId,jdbcType=INTEGER},
+      </if>
+      <if test="bmpName != null" >
+        bmp_name = #{bmpName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tqmall.athena.bean.entity.bank.BankBmpDO" >
+    update db_bank_bmp
+    set gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=CHAR},
+      keyword = #{keyword,jdbcType=VARCHAR},
+      province_id = #{provinceId,jdbcType=INTEGER},
+      city_id = #{cityId,jdbcType=INTEGER},
+      district_id = #{districtId,jdbcType=INTEGER},
+      bmp_name = #{bmpName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectBankBmp" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from db_bank_bmp
+    where is_deleted = 'N' and keyword = #{keyword,jdbcType=VARCHAR}
+    <if test="provinceId != null">
+      and province_id = #{provinceId,jdbcType=INTEGER}
+    </if>
+    <if test="cityId != null">
+      and city_id = #{cityId,jdbcType=INTEGER}
+    </if>
+    <if test="districtId != null">
+      and district_id = #{districtId,jdbcType=INTEGER}
+    </if>
+  </select>
+  <select id="selectBmpCity" resultType="com.tqmall.athena.bean.bizBean.bank.BankTqAreaBO" >
+    select city_id as id
+    from db_bank_bmp
+    where is_deleted = 'N' and keyword = #{keyword,jdbcType=VARCHAR}
+    <if test="provinceId != null">
+      and province_id = #{provinceId,jdbcType=INTEGER}
+    </if>
+  </select>
+  <select id="selectBmpDistrict" resultType="com.tqmall.athena.bean.bizBean.bank.BankTqAreaBO" >
+    select district_id as id
+    from db_bank_bmp
+    where is_deleted = 'N' and keyword = #{keyword,jdbcType=VARCHAR}
+    and province_id = #{provinceId,jdbcType=INTEGER}
+    and city_id = #{cityId,jdbcType=INTEGER}
+  </select>
+</mapper>
